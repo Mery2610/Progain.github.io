@@ -1,2 +1,410 @@
 # Progain.github.io
 Project Website
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>ProGain – Natürlich gesund zunehmen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-dark: #050608;
+      --bg-green: #0b2b23;
+      --accent: #7ee2a2;
+      --text-light: #f6f6f6;
+      --text-muted: #b7c2c0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, var(--bg-green), var(--bg-dark));
+      color: var(--text-light);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      margin-left: 16px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 4px 10px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 8px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #022015;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-light);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-video {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-video-inner {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 12px;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #3a6a4c, #07130f);
+    }
+
+    .hero-video-inner iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .two-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    ul {
+      padding-left: 18px;
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .step {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .step span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(126, 226, 162, 0.1);
+      border: 1px solid rgba(126, 226, 162, 0.6);
+      color: var(--accent);
+      font-size: 0.75rem;
+      margin-right: 6px;
+    }
+
+    .cta-block {
+      text-align: center;
+      padding: 24px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(
+        135deg,
+        rgba(126, 226, 162, 0.06),
+        rgba(0, 0, 0, 0.4)
+      );
+    }
+
+    .cta-block p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-video {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">ProGain</div>
+      <nav>
+        <a href="#problem">Problem</a>
+        <a href="#loesung">Lösung</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#termin">Termin</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="pill">
+            <span></span>Startup-MVP für gesunde Gewichtszunahme
+          </div>
+          <h1>Natürlich gesund zunehmen – mit ProGain.</h1>
+          <p>
+            ProGain ist eine 30-Tage-Kur, die den Appetit auf natürliche Weise
+            unterstützt. Unser MVP macht die Idee greifbar: mit einem
+            Pitch-Video und dieser Landing-Page.
+          </p>
+          <div class="cta-row">
+            <a class="btn-primary" href="#termin">Termin über Calendly buchen</a>
+            <a class="btn-secondary" href="#video">Pitch-Video ansehen</a>
+          </div>
+        </div>
+
+        <div class="hero-video" id="video">
+          <div class="hero-video-inner">
+            <!-- HIER später den YouTube-Einbettungscode einfügen -->
+            <!-- Beispiel:
+            <iframe src="https://www.youtube.com/embed/DEIN_VIDEO_ID" allowfullscreen></iframe>
+            -->
+          </div>
+        </div>
+      </section>
+
+      <section id="problem">
+        <h2>Für wen ist ProGain gedacht?</h2>
+        <div class="two-cols">
+          <div class="card">
+            <h3>Das Problem</h3>
+            <p>
+              Viele Menschen wollen zunehmen, schaffen es aber nicht, genug zu
+              essen – sei es durch Appetitlosigkeit, Stress oder einen sehr
+              hohen Kalorienbedarf.
+            </p>
+            <ul>
+              <li>Untergewichtige mit geringem Appetit</li>
+              <li>Menschen mit hohem Energieverbrauch</li>
+              <li>Sportler im Muskel- und Masseaufbau</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Unser Ansatz</h3>
+            <p>
+              ProGain erleichtert die tägliche Kalorienaufnahme. Die Kur lässt
+              sich einfach in den Alltag integrieren und wird durch unser MVP
+              verständlich erklärt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="loesung">
+        <h2>Was zeigt dieses MVP?</h2>
+        <div class="two-cols">
+          <div class="card">
+            <h3>Pitch-Video</h3>
+            <p>
+              In maximal 45 Sekunden erklären wir die Idee, Zielgruppe und den
+              Nutzen von ProGain – klar, verständlich und leicht teilbar.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Landing-Page</h3>
+            <p>
+              Diese Seite fasst Problem, Lösung und Ablauf zusammen und bietet
+              eine einfache Möglichkeit, Rückfragen zu stellen und Feedback zu
+              geben.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ablauf">
+        <h2>Wie läuft ProGain ab?</h2>
+        <div class="steps">
+          <div class="step">
+            <span>1</span> Kur starten &ndash; morgens ein Glas ProGain auf nüchternen
+            Magen trinken.
+          </div>
+          <div class="step">
+            <span>2</span> Im Alltag auf regelmäßige, ausgewogene Mahlzeiten achten.
+          </div>
+          <div class="step">
+            <span>3</span> Fortschritte beobachten und bei Bedarf Feedback geben.
+          </div>
+        </div>
+      </section>
+
+      <section id="termin">
+        <div class="cta-block">
+          <h2>Termin vereinbaren & Feedback geben</h2>
+          <p>
+            Sie möchten Fragen stellen, Feedback geben oder die Idee gemeinsam
+            durchgehen? Dann buchen Sie einen kurzen Videocall mit uns.
+          </p>
+          <a
+            class="btn-primary"
+            href="https://calendly.com/DEIN-CALENDLY-LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Termin über Calendly buchen
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2025 ProGain – Studentisches Projekt (MVP)</div>
+      <div>Projektteam: Linda Özgün &amp; Meryan Hussein</div>
+    </footer>
+  </div>
+</body>
+</html>
